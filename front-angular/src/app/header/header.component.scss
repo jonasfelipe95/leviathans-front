@@ -1,0 +1,79 @@
+@import "../../theme/variables";
+
+.header {
+  background: $header-background;
+  height: $header-height;
+  display: flex;
+  width: 100vw;
+  padding-left: 8px;
+
+  .logo-container {
+    display: inline-flex;
+    height: 100%;
+    padding: 4px;
+
+    img{
+      height: 100%;
+    }
+  }
+  .nav-menu-container {
+    display: inline-flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+
+    .nav-menu {
+      list-style: none;
+      display: inline-flex;
+      height: 100%;
+
+      .menu-item {
+        text-transform: uppercase;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        color: $header-font-color;
+        font-weight: bold;
+        height: 100%;
+        padding-left: 16px;
+        padding-right: 16px;
+
+        &:hover {
+          background-color: $header-nav-hover-background;
+          color: $header-nav-hover-color;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+  .btn-login-container {
+    height: 100%;
+    display: inline-block;
+    float: right;
+    margin-left: auto;
+
+
+    .btn-flex-container {
+      display: flex;
+      height: 100%;
+      align-items: center;
+      padding: 8px 16px;
+      button {
+        height: 32px;
+        border-radius: 32px;
+        background-color: $header-btn-login-background;
+        border: 2px solid $header-btn-login-border-color;
+        padding: 0 16px;
+        color: $header-btn-login-color;
+        text-transform: uppercase;
+
+        &:hover {
+          cursor: pointer;
+          background-color: $header-btn-login-hover-background;
+          border-color: $header-btn-login-hover-border-color;
+          color: $header-btn-login-hover-color;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,53 @@
+<div class="login">
+    <div class="box-form-login">
+
+        <div class="tab-header">
+            <div class="tab">
+                <div class="tab-item" (click)="tabLogin()">
+                    Entrar
+                </div>
+                <div class="tab-item" (click)="tabRegister()">
+                    Cadastrar
+                </div>
+            </div>
+        </div>
+        <div class="tab-body">
+            <div *ngIf="dataProvider.loginTabActive=='login'">
+                <form>
+                    <label for="nickname">Nickname</label>
+                    <input [(ngModel)]="userLogin.nick" id="nickname" name="nickname" type="text"
+                        placeholder="Nickname">
+                    <label for="password">Senha</label>
+                    <input [(ngModel)]="userLogin.password" type="password" id="password" name="password"
+                        placeholder="Senha">
+
+                    <button (click)="login()">Entrar</button>
+                </form>
+            </div>
+            <div *ngIf="dataProvider.loginTabActive=='register'">
+                <form>
+                    <label for="firstName">Nome</label>
+                    <input [(ngModel)]="userRegister.firstName" id="firstName" name="firstName" type="text"
+                        placeholder="Nome">
+                    <label for="lastName">Sobrenome</label>
+                    <input [(ngModel)]="userRegister.lastName" id="lastName" name="lastName" type="text"
+                        placeholder="Sobrenome">
+                    <label for="emailAdress">E-mail</label>
+                    <input [(ngModel)]="userRegister.emailAdress" id="emailAdress" name="emailAdress" type="email"
+                        placeholder="E-mail">
+                    <label for="nickname">Nickname</label>
+                    <input [(ngModel)]="userRegister.nick" id="nickname" name="nickname" type="text"
+                        placeholder="Nickname">
+                    <label for="password">Senha</label>
+                    <input [(ngModel)]="userRegister.password" type="password" id="password" name="password"
+                        placeholder="Senha">
+                    <label for="confirmPassword">Confirmar Senha</label>
+                    <input [(ngModel)]="confirmPassword" type="password" id="confirmPassword" name="confirmPassword"
+                        placeholder="Confirmar Senha">
+
+                    <button [disabled]="!validatorRegisterForm()" (click)="register()">Cadastrar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

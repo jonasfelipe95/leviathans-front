@@ -1,0 +1,55 @@
+.step-indicator {
+    margin: 20px 0 0;
+}
+.step-indicator ul {
+    padding: 0;
+    position: relative;
+    list-style: none;
+    height: 26px;
+    margin-bottom: 8px;
+}
+.step-indicator ul .line {
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    background-color: #979797;
+    top: calc(50% - 0.5px);
+    left: 0;
+}
+.step-indicator ul .bdc {
+    width: 26px;
+    height: 26px;
+    text-align: center;
+    line-height: 24px;
+    border-radius: 4px;
+    background: #12a5f4;
+    margin: 0;
+    margin-right: 4px;
+    display: inline-block;
+    color: white;
+    position: relative;
+}
+.step-indicator ul .bdc img {
+    display: block;
+    width: 24px;
+    height: 24px;
+}
+.step-indicator ul .bdc:last-child {
+    margin-right: 0;
+}
+.step-indicator ul .actv {
+    background: #000;
+}
+.step-indicator ul .actv img {
+    display: none;
+}
+.step-indicator ul .actv-last {
+    background: #12a5f4 !important;
+}
+.step-indicator ul .actv ~ .bdc {
+    background: #000;
+    border-color: #979797;
+}
+.step-indicator ul .actv ~ .bdc img {
+    display: none;
+}
