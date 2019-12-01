@@ -1,6 +1,5 @@
 <div class="login">
-    <div class="box-form-login">
-
+    <div *ngIf="!spinner" class="box-form-login">
         <div class="tab-header">
             <div class="tab">
                 <div class="tab-item" (click)="tabLogin()">
@@ -26,22 +25,23 @@
             </div>
             <div *ngIf="dataProvider.loginTabActive=='register'">
                 <form>
-                    <label for="firstName">Nome</label>
+                    <label for="firstName">*Nome</label>
                     <input [(ngModel)]="userRegister.firstName" id="firstName" name="firstName" type="text"
                         placeholder="Nome">
-                    <label for="lastName">Sobrenome</label>
+                    <label for="lastName">*Sobrenome</label>
                     <input [(ngModel)]="userRegister.lastName" id="lastName" name="lastName" type="text"
                         placeholder="Sobrenome">
-                    <label for="emailAdress">E-mail</label>
+                    <label for="emailAdress">*E-mail</label>
                     <input [(ngModel)]="userRegister.emailAdress" id="emailAdress" name="emailAdress" type="email"
                         placeholder="E-mail">
-                    <label for="nickname">Nickname</label>
+                    <label for="nickname">*Nickname</label>
                     <input [(ngModel)]="userRegister.nick" id="nickname" name="nickname" type="text"
                         placeholder="Nickname">
-                    <label for="password">Senha</label>
+                    <label for="password">*Senha</label>
                     <input [(ngModel)]="userRegister.password" type="password" id="password" name="password"
                         placeholder="Senha">
-                    <label for="confirmPassword">Confirmar Senha</label>
+                    <label for="confirmPassword">*Confirmar Senha <span
+                            *ngIf="userRegister.password !== confirmPassword">(Deve ser igual a senha)</span></label>
                     <input [(ngModel)]="confirmPassword" type="password" id="confirmPassword" name="confirmPassword"
                         placeholder="Confirmar Senha">
 
@@ -49,5 +49,8 @@
                 </form>
             </div>
         </div>
+    </div>
+    <div *ngIf="spinner" class="loader-container">
+        <app-loader></app-loader>
     </div>
 </div>

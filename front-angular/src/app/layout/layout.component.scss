@@ -1,0 +1,14 @@
+@import "../../theme/variables";
+
+.layout-container {
+  position: relative;
+  padding-bottom: $footer-height;
+  min-height: 100vh;
+
+  .footer-container {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+  }
+}

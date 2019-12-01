@@ -12,7 +12,10 @@
     height: 100%;
     padding: 4px;
 
-    img{
+    &:hover {
+      cursor: pointer;
+    }
+    img {
       height: 100%;
     }
   }
@@ -52,7 +55,6 @@
     float: right;
     margin-left: auto;
 
-
     .btn-flex-container {
       display: flex;
       height: 100%;
@@ -66,6 +68,7 @@
         padding: 0 16px;
         color: $header-btn-login-color;
         text-transform: uppercase;
+        transition: all 0.3s ease;
 
         &:hover {
           cursor: pointer;
@@ -75,5 +78,8 @@
         }
       }
     }
+  }
+  .auto-nickname {
+    text-transform: none !important;
   }
 }

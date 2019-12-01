@@ -1,0 +1,13 @@
+@import '../../theme/variables';
+
+.footer{
+    height: $footer-height;
+    padding: 8px;
+    background-color: $color-2;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    font-size: 12px;
+    
+}

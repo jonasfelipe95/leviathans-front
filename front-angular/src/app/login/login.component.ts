@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { LoginService } from './shared/login.service';
 import { DataProvider } from '../providers/data.provider';
-import { RegisterService } from './shared/register.service';
+import { UserService } from './shared/user.service';
 
 @Component({
   selector: 'app-login',
@@ -11,20 +10,21 @@ import { RegisterService } from './shared/register.service';
 })
 export class LoginComponent implements OnInit {
 
+  userLogin: any = {};
+  userRegister: any = {};
+  confirmPassword;
+  spinner = false;
 
   constructor(
     private router: Router,
-    private loginService: LoginService,
-    private registerService: RegisterService,
+    private userService: UserService,
     private dataProvider: DataProvider
   ) { }
 
-  userLogin: any = {};
-  userRegister: any = {};
-  confirmPassword = '';
-
   ngOnInit() {
     this.dataProvider.loginTabActive = 'login';
+    // tslint:disable-next-line:no-unused-expression
+    localStorage.getItem('userId') && this.router.navigate(['/mydashboard']);
   }
 
   toMyDashboard() {
@@ -32,24 +32,30 @@ export class LoginComponent implements OnInit {
   }
 
   tabLogin() {
-    console.log('tab login');
     this.dataProvider.loginTabActive = 'login';
   }
   tabRegister() {
-    console.log('tab register');
     this.dataProvider.loginTabActive = 'register';
   }
   login() {
-    console.log(this.userLogin);
     if (this.userLogin) {
       if (this.userLogin.nick && this.userLogin.password) {
-        this.loginService.login(this.userLogin).subscribe(response => {
-          console.log(response);
-        }, err => {
-          console.log(err);
+        this.spinner = true;
+        this.userService.login(this.userLogin).subscribe((user: any) => {
+          if (user !== null) {
+            this.dataProvider.userLoged = user;
+            localStorage.setItem('userId', user.id);
+            this.spinner = false;
+            this.router.navigate(['/mydashboard']);
+          } else {
+            this.spinner = false;
+            alert('Ops! Algo deu errado, confira seus dados e tente novamente!');
+          }
+        }, error => {
+          console.log(error);
+          this.spinner = false;
+          alert('Ops! Algo deu errado, confira seus dados e tente novamente!');
         });
-      } else {
-        console.log('Formulário incompleto');
       }
     }
   }
@@ -79,13 +85,24 @@ export class LoginComponent implements OnInit {
     return formValid;
   }
   register() {
-    console.log(this.userRegister);
     if (this.userRegister) {
       if (this.validatorRegisterForm()) {
-        this.registerService.register(this.userRegister).subscribe(response => {
-          console.log(response);
-        }, err => {
-          console.log(err);
+        this.spinner = true;
+        console.log(this.userRegister);
+        this.userService.register(this.userRegister).subscribe((user: any) => {
+          if (user !== null) {
+            this.spinner = false;
+            localStorage.setItem('userId', user.id);
+            this.router.navigate(['/mydashboard']);
+          } else {
+            this.spinner = false;
+            alert('Ops! Algo deu errado, confira seus dados e tente novamente mais tarde!');
+          }
+        }, error => {
+          console.log(error);
+          this.spinner = false;
+          alert('Ops! Algo deu errado, confira seus dados e tente novamente mais tarde!');
+
         });
 
       } else {

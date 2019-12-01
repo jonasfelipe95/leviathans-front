@@ -1,0 +1,11 @@
+@mixin btn-outline($color, $label-color: #fff) {
+  border: 1px solid $color;
+  color: $color;
+  background-color: transparent;
+
+  &:hover {
+    cursor: pointer;
+    background-color: $color;
+    color: $label-color;
+  }
+}

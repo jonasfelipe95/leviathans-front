@@ -4,6 +4,7 @@ import { HomeComponent } from './home/home.component';
 import { LayoutComponent } from './layout/layout.component';
 import { LoginComponent } from './login/login.component';
 import { MyDashboardComponent } from './my-dashboard/my-dashboard.component';
+import { RankingComponent } from './ranking/ranking.component';
 
 
 const routes: Routes = [
@@ -27,6 +28,10 @@ const routes: Routes = [
       {
         path: 'mydashboard',
         component: MyDashboardComponent
+      },
+      {
+        path: 'ranking',
+        component: RankingComponent
       }
     ]
   },

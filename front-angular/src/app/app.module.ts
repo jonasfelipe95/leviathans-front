@@ -9,12 +9,14 @@ import { LayoutComponent } from './layout/layout.component';
 import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './header/header.component';
 import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
 import { MyDashboardComponent } from './my-dashboard/my-dashboard.component';
-import { LoginService } from './login/shared/login.service';
 import { HttpClientModule } from '@angular/common/http';
 import { DataProvider } from './providers/data.provider';
-import { RegisterService } from './login/shared/register.service';
+import { UserService } from './login/shared/user.service';
+import { CharacterService } from './my-dashboard/shared/character.service';
+import { FooterComponent } from './footer/footer.component';
+import { RankingComponent } from './ranking/ranking.component';
+import { LoaderComponent } from './loader/loader.component';
 
 @NgModule({
   declarations: [
@@ -23,8 +25,10 @@ import { RegisterService } from './login/shared/register.service';
     HomeComponent,
     HeaderComponent,
     LoginComponent,
-    RegisterComponent,
-    MyDashboardComponent
+    MyDashboardComponent,
+    FooterComponent,
+    RankingComponent,
+    LoaderComponent
   ],
   entryComponents: [
     LoginComponent
@@ -38,9 +42,9 @@ import { RegisterService } from './login/shared/register.service';
 
   ],
   providers: [
-    LoginService,
-    RegisterService,
-    DataProvider
+    UserService,
+    DataProvider,
+    CharacterService
   ],
   bootstrap: [AppComponent]
 })

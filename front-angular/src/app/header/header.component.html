@@ -1,23 +1,18 @@
 <div class="header">
-    <div class="logo-container">
+    <div [routerLink]="['/home']" class="logo-container">
         <img src="../../assets/leviathan.png" alt="">
     </div>
     <div class="nav-menu-container">
         <ul class="nav-menu">
             <li [routerLink]="['/home']" class="menu-item">
-                Home
-            </li>
-            <li class="menu-item">
-                O Jogo
-            </li>
-            <li class="menu-item">
-                Sobre
+                Leviathan's Childs
             </li>
         </ul>
     </div>
-    <div class="btn-login-container">
+    <div id="teste" class="btn-login-container">
         <div class="btn-flex-container">
-            <button (click)="toLogin()">Entrar</button>
+            <button *ngIf="getUserName() === 'Error'" (click)="toLogin()">Entrar</button>
+            <button class="auto-nickname" *ngIf="getUserName() !== 'Error'" (click)="toMyDashboard()">{{ getUserName() }}</button>
         </div>
     </div>
 </div>

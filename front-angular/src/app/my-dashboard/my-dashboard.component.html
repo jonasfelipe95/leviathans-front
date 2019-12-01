@@ -1,1 +1,63 @@
-<p>my-dashboard works!</p>
+<div class="my-dashboard">
+    <div *ngIf="!spinner" class="profile-data">
+        <button class="btn-logout" (click)="logout()">Sair</button>
+        <div class="user-nick">
+            <h1>{{ user?.nick }}</h1>
+        </div>
+        <div class="user-data">
+            <p> {{ user?.firstName + ' ' + user?.lastName }}</p>
+            <p>{{ user?.emailAdress }}</p>
+        </div>
+        <div class="btn-ranking-container">
+            <button class="btn-ranking" (click)="goToRanking()">Ranking</button>
+        </div>
+    </div>
+    <div *ngIf="!spinner">
+        <h2 class="characters-title">Personagens</h2>
+        <p class="no-characters-msg" *ngIf="!loadingCharacters && !characters.length">Nenhum personagem cadastrado</p>
+    </div>
+
+    <div *ngIf="!spinner && !loadingCharacters" class="characters-data">
+        <table *ngIf="characters.length">
+            <thead>
+                <tr>
+                    <th>
+                        Nome
+                    </th>
+                    <th>
+                        Classe
+                    </th>
+                    <th>
+                        Elemento
+                    </th>
+                    <th>
+                        Amuleto
+                    </th>
+                    <th>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let character of characters; let indexCharacter = index">
+                    <td class="col-name">
+                        {{ character?.name }}
+                    </td>
+                    <td class="col-job" title="{{ jobs[indexCharacter]?.description }}">
+                        {{ jobs[indexCharacter]?.name }}
+                    </td>
+                    <td class="col-element" title="{{ elements[indexCharacter]?.description }}">
+                        {{ elements[indexCharacter]?.name }}
+                    </td>
+                    <td class="col-amulet" title="{{ amulets[indexCharacter]?.description }}">
+                        {{ amulets[indexCharacter]?.name }}
+                    </td>
+                    <td>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="spinner || loadingCharacters" class="loader-container">
+        <app-loader></app-loader>
+    </div>
+</div>

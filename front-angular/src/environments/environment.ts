@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  apiURL: 'http://localhost:5000'
+  apiURL: 'http://leviathanschilds.azurewebsites.net',
+  // apiURL: 'http://localhost:5000'
 };
 
 /*
