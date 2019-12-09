@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     this.dataProvider.loginTabActive = 'login';
     // tslint:disable-next-line:no-unused-expression
-    localStorage.getItem('userId') && this.router.navigate(['/mydashboard']);
+    localStorage.getItem('userId') && this.getUser(localStorage.getItem('userId'));
   }
 
   toMyDashboard() {
@@ -43,10 +43,8 @@ export class LoginComponent implements OnInit {
         this.spinner = true;
         this.userService.login(this.userLogin).subscribe((user: any) => {
           if (user !== null) {
-            this.dataProvider.userLoged = user;
             localStorage.setItem('userId', user.id);
-            this.spinner = false;
-            this.router.navigate(['/mydashboard']);
+            this.getUser(user.id);
           } else {
             this.spinner = false;
             alert('Ops! Algo deu errado, confira seus dados e tente novamente!');
@@ -88,7 +86,6 @@ export class LoginComponent implements OnInit {
     if (this.userRegister) {
       if (this.validatorRegisterForm()) {
         this.spinner = true;
-        console.log(this.userRegister);
         this.userService.register(this.userRegister).subscribe((user: any) => {
           if (user !== null) {
             this.spinner = false;
@@ -106,8 +103,29 @@ export class LoginComponent implements OnInit {
         });
 
       } else {
-        console.log('formulário errado');
+        alert('Ops! Algo deu errado!');
       }
     }
+  }
+  getUser(userId: string) {
+    this.spinner = true;
+    this.userService.getUserById(userId).subscribe((user: any) => {
+      if (user !== null) {
+        this.dataProvider.userLoged = user;
+        this.spinner = false;
+        this.dataProvider.userLoged = user;
+        this.spinner = false;
+        this.router.navigate(['/mydashboard']);
+      } else {
+        this.spinner = false;
+        alert('Ops! Erro ao carregar Usuário');
+        localStorage.clear();
+        this.router.navigate(['/login']);
+      }
+    }, error => {
+      console.log(error);
+      this.spinner = false;
+
+    });
   }
 }

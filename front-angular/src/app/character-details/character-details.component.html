@@ -1,0 +1,85 @@
+<div class="character-detail-container">
+    <div *ngIf="!spinner">
+        <div class="align-container">
+            <div class="img-character-container">
+                <img src="../../assets/knight.gif" alt="">
+            </div>
+            <div class="details-container">
+                <h1>{{ character?.name }} <span class="lvl-in-name">(Nvl.: {{ character?.level }}) </span></h1>
+                <p>
+                    <span>Classe: </span>
+                    <span class="warrior-color" [ngClass]="{'warrior-color': job?.name === 'Guerreiro'}">
+                        {{ job?.name }}</span>
+                    - {{ job?.description }}
+                </p>
+                <p>
+                    <span>Elemento: </span>
+                    <span [ngClass]="{'water-color': element?.name === 'Agua', 
+                        'fire-color': element?.name === 'Fogo', 
+                        'air-color': element?.name === 'Ar', 
+                        'earth-color': element?.name === 'Terra'}">
+                        {{ element?.name }}
+                    </span>
+                    - {{ element?.description }}
+                </p>
+                <p>
+                    <span>Amuleto: </span>
+                    <span [ngClass]="{'bracelet-color': amulet?.name === 'Bracelete', 
+                        'pendant-color': amulet?.name === 'Pingente', 
+                        'earring-color': amulet?.name === 'Brinco'}">
+                        {{ amulet?.name }}
+                    </span>
+                    - {{ amulet?.description }}
+                </p>
+                <div class="status-character">
+                    <div class="data-status-align">
+                        <p class="data-status">
+                            Nível <span>(Exp.Atual / Exp.Prox. Nvl.)</span>: {{ character?.level }}
+                            ({{ character?.xp }}xp / {{ character?.xpToUp }}xp)
+                        </p>
+                        <p class="data-status">
+                            Nvl. amuleto <span>(Exp.)</span>: {{ character?.amuletLevel }}
+                            ({{ character?.amuletExperience }}xp)
+                        </p>
+                    </div>
+                    <div class="data-status-align">
+                        <p class="data-status">
+                            Partidas jogadas <span>(vitórias / Derrotas)</span>: {{ character?.battlesNumber }}
+                            ({{ character?.victorysNumber }} / {{ character?.losesNumber }})
+                        </p>
+                        <p class="data-status">
+                            Tempo de Batalha <span>(HH:MM:SS)</span>: {{ formatTime(character?.battleTimeInSeconds) }}
+                        </p>
+                    </div>
+
+                    <div class="data-status-align-2">
+
+                        <p class="data-status">
+                            Agilidade: {{ character?.agility.toFixed(2) }}
+                        </p>
+                        <p class="data-status">
+                            Inteligência: {{ character?.intelligence.toFixed(2) }}
+                        </p>
+
+                        <p class="data-status">
+                            Força: {{ character?.strength.toFixed(2) }}
+                        </p>
+                        <p class="data-status">
+                            Vida: {{ character?.hp.toFixed(2) }}
+                        </p>
+                    </div>
+
+
+
+
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="spinner" class="loader-container">
+        <app-loader></app-loader>
+    </div>
+</div>

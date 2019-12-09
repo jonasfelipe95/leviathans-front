@@ -1,5 +1,75 @@
 <div class="ranking-container">
-    <div class="spinner-container">
+    <div *ngIf="spinner || loadingCharacters" class="spinner-container">
         <app-loader></app-loader>
+    </div>
+    <div class="ranking-table-container">
+        <h2 class="characters-title">Ranking</h2>
+        <div class="btn-container-type-ranking">
+            <button (click)="sortRanking('level')" [ngClass]="{'active': rankingType==='level'}"> Nível </button>
+            <button (click)="sortRanking('victories')" [ngClass]="{'active': rankingType==='victories'}"> Vitórias </button>
+            <button (click)="sortRanking('time')" [ngClass]="{'active': rankingType==='time'}"> Tempo de jogo </button>
+        </div>
+        <div *ngIf="!spinner && !loadingCharacters" class="characters-data">
+            <table *ngIf="characters.length">
+                <thead>
+                    <tr>
+                        <th>
+                            Rank
+                        </th>
+                        <th>
+                            Nvl.
+                        </th>
+                        <th>
+                            Nome
+                        </th>
+                        <th>
+                            Vitórias
+                        </th>
+                        <th>
+                            Tempo de jogo
+                        </th>
+                        <th>
+                            Classe
+                        </th>
+                        <th>
+                            Elemento
+                        </th>
+                        <th>
+                            Amuleto
+                        </th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr (click)="detailsCharacter(character.id)"
+                        *ngFor="let character of characters; let indexCharacter = index">
+                        <td class="col-rank">
+                            {{ indexCharacter + 1 }}
+                        </td>
+                        <td class="col-level">
+                            {{ character?.level }}
+                        </td>
+                        <td class="col-name">
+                            {{ character?.name }}
+                        </td>
+                        <td class="col-victories">
+                            {{ character?.victorysNumber }}
+                        </td>
+                        <td class="col-time">
+                            {{ formatTime(character?.battleTimeInSeconds) }}
+                        </td>
+                        <td class="col-job" title="{{ jobs[indexCharacter]?.description }}">
+                            {{ jobs[indexCharacter]?.name }}
+                        </td>
+                        <td class="col-element" title="{{ elements[indexCharacter]?.description }}">
+                            {{ elements[indexCharacter]?.name }}
+                        </td>
+                        <td class="col-amulet" title="{{ amulets[indexCharacter]?.description }}">
+                            {{ amulets[indexCharacter]?.name }}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>

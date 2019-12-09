@@ -4,18 +4,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #fff;
+  // background-color: #fff;
   height: calc(100vh - #{$header-height} - #{$footer-height});
   width: 100vw;
 
-  .loader-container {
-    width: 200px;
-    height: 200px;
-    margin: 16px auto;
-  }
+
 
   .box-form-login {
-    width: 400px;
+    width: 600px;
     max-width: 100%;
     margin: 0 auto;
     border-radius: 8px;

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { Observable } from 'rxjs';
 
 @Injectable()
 export class CharacterService {
@@ -11,17 +12,23 @@ export class CharacterService {
         private httpClient: HttpClient
     ) { }
 
-    getCharacterByUser(userId) {
-        return this.httpClient.get(`${environment.apiURL}/api/character/user/${userId}`);
+    getAll(): Observable<any[]> {
+        return this.httpClient.get<any[]>(`${environment.apiURL}/api/character`);
     }
-    getJobById(jobId) {
-        return this.httpClient.get(`${environment.apiURL}/api/job/${jobId}`);
+    getChacacterById(characterId: string): Observable<any> {
+        return this.httpClient.get<any>(`${environment.apiURL}/api/character/${characterId}`);
     }
-    getAmuletById(amuletId) {
-        return this.httpClient.get(`${environment.apiURL}/api/amulet/${amuletId}`);
+    getCharacterByUser(userId): Observable<any> {
+        return this.httpClient.get<any>(`${environment.apiURL}/api/character/user/${userId}`);
     }
-    getElementById(elementId) {
-        return this.httpClient.get(`${environment.apiURL}/api/element/${elementId}`);
+    getJobById(jobId): Observable<any> {
+        return this.httpClient.get<any>(`${environment.apiURL}/api/job/${jobId}`);
+    }
+    getAmuletById(amuletId): Observable<any> {
+        return this.httpClient.get<any>(`${environment.apiURL}/api/amulet/${amuletId}`);
+    }
+    getElementById(elementId): Observable<any> {
+        return this.httpClient.get<any>(`${environment.apiURL}/api/element/${elementId}`);
     }
 
 }

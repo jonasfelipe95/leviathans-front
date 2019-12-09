@@ -14,7 +14,8 @@
 
 .home {
   height: calc(100vh - #{$header-height} - #{$footer-height});
-  background-color: $color-4;
+  background-color: #000d;
+  color: #fff;
 
   .home-highlight {
     display: none;
@@ -70,6 +71,7 @@
         margin: 0 auto;
         transition: all 0.3s ease;
         animation: colorAnimation 2s ease-in-out infinite;
+        margin-top: 32px;
 
         &:hover {
           cursor: pointer;

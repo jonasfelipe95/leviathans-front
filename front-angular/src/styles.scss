@@ -9,6 +9,8 @@
 }
 body {
   overflow: hidden;
+  background: #000d;
+  color: #fff;
 }
 form {
   width: 100%;
@@ -49,4 +51,121 @@ form {
       opacity: 0.5;
     }
   }
+}
+.characters-data {
+  table {
+    width: 100%;
+    overflow: hidden;
+
+    thead {
+      tr {
+        background-color: $color-1;
+        color: #fff;
+        th {
+          padding: 8px;
+          border: 1px solid rgba(255, 255, 255, 0.5);
+          &:first-child {
+            border-radius: 8px 0 0 0;
+          }
+          &:last-child {
+            border-radius: 0 8px 0 0;
+          }
+        }
+      }
+    }
+    tbody {
+      tr {
+        &:nth-child(even) {
+          background-color: rgba($color: $color-4, $alpha: 0.3);
+        }
+        &:hover {
+          cursor: pointer;
+          background-color: $color-3;
+        }
+        &:last-child {
+          td {
+            &:first-child {
+              border-radius: 0 0 0 8px;
+            }
+            &:last-child {
+              border-radius: 0 0 8px 0;
+            }
+          }
+        }
+        td {
+          padding: 8px;
+          border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+        .col-name,
+        .col-level,
+        .col-victories,
+        .col-time,
+        .col-job,
+        .col-rank,
+        .col-element,
+        .col-amulet {
+          text-align: center;
+        }
+      }
+    }
+  }
+}
+.characters-title {
+  color: $color-3;
+  text-align: center;
+  margin-bottom: 4px;
+}
+.form-group-align {
+  display: flex;
+  > div {
+    &:first-child {
+      padding-right: 8px;
+      width: 40%;
+    }
+    &:last-child {
+      padding-left: 8px;
+      width: 60%;
+    }
+  }
+}
+.form-group-align-2 {
+  display: flex;
+  > div {
+    width: 50%;
+    &:first-child {
+      padding-right: 8px;
+    }
+    &:last-child {
+      padding-left: 8px;
+    }
+  }
+}
+.fire-color {
+  color: orange;
+}
+.air-color {
+  color: lightblue;
+}
+.earth-color {
+  color: #964b00;
+}
+.water-color {
+  color: aqua;
+}
+.warrior-color {
+  color: gray;
+}
+.bracelet-color {
+  color: lemonchiffon;
+}
+.pendant-color {
+  color: silver;
+}
+.earring-color {
+  color: gold;
+}
+.loader-container {
+  width: 200px;
+  height: 200px;
+  margin: 16px auto;
 }

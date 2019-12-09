@@ -1,7 +1,50 @@
+@import "../../theme/variables";
+
 .ranking-container {
   .spinner-container {
     width: 200px;
     height: 200px;
     margin: 32px auto;
+  }
+}
+.ranking-table-container {
+  width: 970px;
+  max-width: 100%;
+  margin: 32px auto;
+}
+.btn-container-type-ranking {
+  width: fit-content;
+  margin: 16px auto;
+  button {
+    height: 32px;
+    background-color: transparent;
+    border: 2px solid $color-3;
+    padding: 0 16px;
+    color: $color-3;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    
+    &:first-child {
+      border-radius: 4px 0 0 4px;
+    }
+    &:last-child {
+      border-radius: 0 4px 4px 0;
+    }
+
+    &:hover {
+      cursor: pointer;
+      background-color: $color-3;
+      border-color: $color-3;
+      color: #fff;
+    }
+    &.active {
+      background-color: rgba($color: $color-3, $alpha: 0.8);
+      border-color: rgba($color: $color-3, $alpha: 0.8);
+      color: #fff;
+      &:hover {
+        cursor: default;
+      }
+    }
   }
 }

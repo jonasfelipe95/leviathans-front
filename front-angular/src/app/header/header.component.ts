@@ -25,7 +25,7 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(['/login']);
   }
   getUserName() {
-    return this.dataProvider.userLoged ? this.dataProvider.userLoged.nick ? this.dataProvider.userLoged.nick : 'Error' : 'Error';
+    return this.dataProvider.userLoged ? (this.dataProvider.userLoged.nick ? this.dataProvider.userLoged.nick : 'Error') : 'Error';
   }
   getUser(userId: string) {
     this.userService.getUserById(userId).subscribe((user: any) => {

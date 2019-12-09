@@ -25,26 +25,38 @@
             </div>
             <div *ngIf="dataProvider.loginTabActive=='register'">
                 <form>
-                    <label for="firstName">*Nome</label>
-                    <input [(ngModel)]="userRegister.firstName" id="firstName" name="firstName" type="text"
-                        placeholder="Nome">
-                    <label for="lastName">*Sobrenome</label>
-                    <input [(ngModel)]="userRegister.lastName" id="lastName" name="lastName" type="text"
-                        placeholder="Sobrenome">
+                    <div class="form-group-align">
+                        <div>
+                            <label for="firstName">*Nome</label>
+                            <input [(ngModel)]="userRegister.firstName" id="firstName" name="firstName" type="text"
+                                placeholder="Nome">
+                        </div>
+                        <div>
+                            <label for="lastName">*Sobrenome</label>
+                            <input [(ngModel)]="userRegister.lastName" id="lastName" name="lastName" type="text"
+                                placeholder="Sobrenome">
+                        </div>
+                    </div>
                     <label for="emailAdress">*E-mail</label>
                     <input [(ngModel)]="userRegister.emailAdress" id="emailAdress" name="emailAdress" type="email"
                         placeholder="E-mail">
                     <label for="nickname">*Nickname</label>
                     <input [(ngModel)]="userRegister.nick" id="nickname" name="nickname" type="text"
                         placeholder="Nickname">
-                    <label for="password">*Senha</label>
-                    <input [(ngModel)]="userRegister.password" type="password" id="password" name="password"
-                        placeholder="Senha">
-                    <label for="confirmPassword">*Confirmar Senha <span
-                            *ngIf="userRegister.password !== confirmPassword">(Deve ser igual a senha)</span></label>
-                    <input [(ngModel)]="confirmPassword" type="password" id="confirmPassword" name="confirmPassword"
-                        placeholder="Confirmar Senha">
-
+                    <div class="form-group-align-2">
+                        <div>
+                            <label for="password">*Senha (mínimo 9 dígitos)</label>
+                            <input [(ngModel)]="userRegister.password" type="password" id="password" name="password"
+                                placeholder="Senha">
+                        </div>
+                        <div>
+                            <label for="confirmPassword">*Confirmar Senha <span
+                                    *ngIf="userRegister.password !== confirmPassword">(Deve ser igual a
+                                    senha)</span></label>
+                            <input [(ngModel)]="confirmPassword" type="password" id="confirmPassword"
+                                name="confirmPassword" placeholder="Confirmar Senha">
+                        </div>
+                    </div>
                     <button [disabled]="!validatorRegisterForm()" (click)="register()">Cadastrar</button>
                 </form>
             </div>

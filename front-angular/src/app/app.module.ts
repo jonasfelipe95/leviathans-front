@@ -17,6 +17,7 @@ import { CharacterService } from './my-dashboard/shared/character.service';
 import { FooterComponent } from './footer/footer.component';
 import { RankingComponent } from './ranking/ranking.component';
 import { LoaderComponent } from './loader/loader.component';
+import { CharacterDetailsComponent } from './character-details/character-details.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { LoaderComponent } from './loader/loader.component';
     MyDashboardComponent,
     FooterComponent,
     RankingComponent,
-    LoaderComponent
+    LoaderComponent,
+    CharacterDetailsComponent
   ],
   entryComponents: [
     LoginComponent

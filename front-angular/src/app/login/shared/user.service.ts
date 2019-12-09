@@ -16,10 +16,7 @@ export class UserService {
         return this.httpClient.post<any>(`${environment.apiURL}/api/user/authentication`, user);
     }
     register(user): Observable<any> {
-        const headers = {
-            'Content-Type': 'application/json'
-        };
-        return this.httpClient.post<any>(`${environment.apiURL}/api/user`, user, { headers });
+        return this.httpClient.post<any>(`${environment.apiURL}/api/user`, user);
     }
     getUserById(userId): Observable<any> {
         return this.httpClient.get<any>(`${environment.apiURL}/api/user/${userId}`);

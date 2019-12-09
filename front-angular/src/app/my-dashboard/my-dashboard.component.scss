@@ -3,14 +3,8 @@
 
 .my-dashboard {
   padding: 16px;
-  padding-right: 50px;
   position: relative;
 
-  .loader-container {
-    width: 200px;
-    height: 200px;
-    margin: 16px auto;
-  }
   .btn-logout {
     width: 50px;
     height: 24px;
@@ -18,12 +12,13 @@
     top: 16px;
     right: 16px;
     border-radius: 24px;
-    @include btn-outline(rgba($color: $color-1, $alpha: 0.8));
+    @include btn-outline(rgba($color: $color-3, $alpha: 0.8));
   }
-  .characters-title{
-    color: $color-4;
+  .characters-subtitle{
+    color: $color-3;
     text-align: center;
     margin-bottom: 16px;
+    font-size: 12px;
   }
   .no-characters-msg{
     text-align: center;
@@ -36,14 +31,14 @@
       h1 {
         font-size: 24px;
         margin-bottom: 16px;
-        color: $color-1;
+        // color: $color-1;
         text-align: center;
       }
     }
     .user-data {
       p {
         text-align: center;
-        color: $color-1;
+        // color: $color-1;
       }
     }
     .btn-ranking-container {
@@ -52,45 +47,7 @@
         border-radius: 24px;
         margin: 16px auto 0;
         display: block;
-        @include btn-outline($color-2);
-      }
-    }
-  }
-  .characters-data {
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      border-radius: 4px;
-      overflow: hidden;
-      thead {
-        tr {
-          background-color: $color-2;
-          color: #fff;
-          th {
-            padding: 8px;
-            border: 1px solid rgba(0, 0, 0, 0.5);
-          }
-        }
-      }
-      tbody {
-        tr {
-          &:nth-child(even) {
-            background-color: rgba($color: $color-4, $alpha: 0.3);
-          }
-          &:hover {
-            cursor: pointer;
-            background-color: $color-4;
-          }
-          td {
-            padding: 8px;
-            border: 1px solid rgba(0, 0, 0, 0.5);
-          }
-          .col-job,
-          .col-element,
-          .col-amulet {
-            text-align: center;
-          }
-        }
+        @include btn-outline($color-3);
       }
     }
   }

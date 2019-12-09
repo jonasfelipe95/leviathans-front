@@ -14,6 +14,8 @@
     </div>
     <div *ngIf="!spinner">
         <h2 class="characters-title">Personagens</h2>
+        <h2 class="characters-subtitle"> (clique para ver mais detalhes) </h2>
+
         <p class="no-characters-msg" *ngIf="!loadingCharacters && !characters.length">Nenhum personagem cadastrado</p>
     </div>
 
@@ -21,6 +23,9 @@
         <table *ngIf="characters.length">
             <thead>
                 <tr>
+                    <th>
+                        Nvl.
+                    </th>
                     <th>
                         Nome
                     </th>
@@ -33,12 +38,13 @@
                     <th>
                         Amuleto
                     </th>
-                    <th>
-                    </th>
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let character of characters; let indexCharacter = index">
+                <tr (click)="detailsCharacter(character.id)" *ngFor="let character of characters; let indexCharacter = index">
+                    <td class="col-level">
+                        {{ character?.level }}
+                    </td>
                     <td class="col-name">
                         {{ character?.name }}
                     </td>
@@ -50,8 +56,6 @@
                     </td>
                     <td class="col-amulet" title="{{ amulets[indexCharacter]?.description }}">
                         {{ amulets[indexCharacter]?.name }}
-                    </td>
-                    <td>
                     </td>
                 </tr>
             </tbody>

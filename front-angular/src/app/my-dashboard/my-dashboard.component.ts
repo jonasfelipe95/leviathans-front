@@ -41,10 +41,11 @@ export class MyDashboardComponent implements OnInit {
         this.user = user;
         this.loadingCharacters = true;
         this.spinner = false;
+        console.log(user);
         this.getCharacterByUser(user.id);
       } else {
         this.spinner = false;
-        alert('Ops! Errou ao carregar Usuário');
+        alert('Ops! Erro ao carregar Usuário');
         localStorage.clear();
         this.router.navigate(['/login']);
       }
@@ -57,7 +58,7 @@ export class MyDashboardComponent implements OnInit {
   getCharacterByUser(userId) {
     this.characterService.getCharacterByUser(userId).subscribe((characters: any) => {
       if (characters !== null) {
-        this.characters = characters;
+        this.characters = characters.sort((a, b) => b.level - a.level);
         this.loadingCharacters = false;
         this.getDetailsCharacters(characters);
       } else {
@@ -125,4 +126,8 @@ export class MyDashboardComponent implements OnInit {
   goToRanking() {
     this.router.navigate(['/ranking']);
   }
+  detailsCharacter(id) {
+    this.router.navigateByUrl(`character/${id}/details`);
+  }
+
 }
